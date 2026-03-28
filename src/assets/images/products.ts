@@ -1,0 +1,1 @@
+export const productImage = './../../../public/product.jpg'
