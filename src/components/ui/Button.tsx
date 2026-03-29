@@ -1,16 +1,41 @@
+import type { ReactNode } from "react";
+
+type ButtonVariant = "primary" | "secondary" | "warning";
+type ButtonSize = "lg" | "md" | "sm";
+
 interface ButtonProps {
-  text: string;
-  variant: "primary" | "secondary" | "warning";
-  loading: boolean;
+  children: ReactNode;
+  variant: ButtonVariant;
+  size?: ButtonSize;
+  loading?: boolean;
 }
 
-function Button({ text, variant, loading }: ButtonProps) {
+const variantStyles = {
+  primary: "bg-amber-600",
+  secondary: "bg-blue-500",
+  warning: "bg-yellow-500",
+};
+
+const sizeStyles = {
+  lg: "px-32 py-8 text-xl",
+  md: "px-16 py-4 text-lg",
+  sm: "px-8 py-2 text-sm",
+};
+
+function Button({
+  children,
+  variant,
+  size = "sm",
+  loading = false,
+}: ButtonProps) {
   return (
     <button
-      className={`${variant} uppercase text-[14px] text-white font-semibold rounded-[2px] px-[16px] py-[8px]`}
+      onClick={() => console.log("CLICKEDD")}
+      disabled={loading}
+      className={`${variantStyles[variant]} ${sizeStyles[size]} text-white font-semibold rounded-sm`}
     >
       {" "}
-      {loading ? "loading" : ""} {text}
+      {loading ? "loading..." : children}
     </button>
   );
 }

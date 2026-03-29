@@ -1,12 +1,1 @@
 @import "tailwindcss";
-
-.primary {
-  @apply bg-[#FA8232];
-}
-.warning {
-  @apply bg-[#232321];
-}
-
-.secondary {
-  @apply bg-[#2DA5F3];
-}
